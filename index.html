@@ -785,6 +785,75 @@
     html[dir="ltr"] .feature-list li::before {
       margin-inline-end: 10px;
     }
+    .nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: block;
+  border: 0;
+  background: transparent;
+  color: #34463e;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 11px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.nav-dropdown-toggle:hover,
+.nav-dropdown:hover .nav-dropdown-toggle {
+  color: var(--green);
+  background: var(--green-light);
+}
+
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 220px;
+  padding: 8px;
+  background: white;
+  border: 1px solid #e5ebe7;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+  z-index: 1000;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu,
+.nav-dropdown.open .nav-dropdown-menu {
+  display: block;
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  white-space: nowrap;
+  padding: 11px 12px;
+  border-radius: 8px;
+  color: #34463e;
+  font-size: 14px;
+}
+
+.nav-dropdown-menu a:hover {
+  background: var(--green-light);
+  color: var(--green);
+}
+
+@media (max-width: 768px) {
+  .nav-dropdown-menu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    margin-top: 5px;
+  }
+
+  .nav-dropdown {
+    width: 100%;
+  }
+}
   </style>
 </head>
 
