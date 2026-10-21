@@ -203,15 +203,45 @@
       font-size: 22px;
     }
 
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 85px 0;
-      color: white;
-      background:
-        radial-gradient(circle at 10% 15%, rgba(201,164,92,.18), transparent 30%),
-        linear-gradient(125deg, #0b2d25, #174f40);
-    }
+    
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 100px 0;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  color: white;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(11, 45, 37, .78),
+      rgba(18, 61, 50, .88)
+    ),
+    url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiX45lU50kjaKuzEgVXzTCnxM-E2nHBBLB6ejvs_SrIeJ32SbsK1o-JXpWQZsq6LfIyzb9Gn5iK2Dyh-ZlSWF8xa0WSvUjzCubqIm8ng3rHJR6Jfy0dSTdCFqVMqdFiaRPG4FDoi6GAfb7Ulhi3BKS4hcXCQGt4in9kXVXpRTQgco2qfVzUWjZzJUHAjQ/s16000-rw/%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D9%81%20%D8%AC%D8%A8%D8%A7%D9%84%20%D8%AA%D9%88%D8%A8%D9%82%D8%A7%D9%84.webp")
+    center / cover no-repeat;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 360px;
+  height: 360px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 50%;
+  inset-inline-end: -120px;
+  bottom: -190px;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+}
+
 
     .hero::after {
       content: "";
