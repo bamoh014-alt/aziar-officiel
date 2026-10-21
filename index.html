@@ -1442,36 +1442,57 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    const pageNames = {
-      home: {
-        ar: "الرئيسية",
-        fr: "Accueil"
-      },
-      commune: {
-        ar: "الجماعة",
-        fr: "La commune"
-      },
-      development: {
-        ar: "برنامج التنمية القروية",
-        fr: "Programme de développement rural"
-      },
-      services: {
-        ar: "الخدمات الإدارية",
-        fr: "Services administratifs"
-      },
-      news: {
-        ar: "الأخبار والمستجدات",
-        fr: "Actualités"
-      },
-      digital: {
-        ar: "الخدمات الرقمية",
-        fr: "Services numériques"
-      },
-      contact: {
-        ar: "اتصل بنا",
-        fr: "Contact"
-      }
-    };
+    
+const pageNames = {
+  home: {
+    ar: "الرئيسية",
+    fr: "Accueil"
+  },
+  commune: {
+    ar: "الجماعة",
+    fr: "La commune"
+  },
+  "commune-info": {
+    ar: "تعريف الجماعة",
+    fr: "Présentation de la commune"
+  },
+  council: {
+    ar: "المجلس الجماعي",
+    fr: "Conseil communal"
+  },
+  competencies: {
+    ar: "اختصاصات الجماعة",
+    fr: "Compétences de la commune"
+  },
+  values: {
+    ar: "قيم الجماعة",
+    fr: "Valeurs de la commune"
+  },
+  recruitment: {
+    ar: "مباريات التوظيف",
+    fr: "Concours de recrutement"
+  },
+  development: {
+    ar: "برنامج التنمية القروية",
+    fr: "Programme de développement rural"
+  },
+  services: {
+    ar: "الخدمات الإدارية",
+    fr: "Services administratifs"
+  },
+  news: {
+    ar: "الأخبار والمستجدات",
+    fr: "Actualités"
+  },
+  digital: {
+    ar: "الخدمات الرقمية",
+    fr: "Services numériques"
+  },
+  contact: {
+    ar: "اتصل بنا",
+    fr: "Contact"
+  }
+};
 
     let currentLanguage = "ar";
     let toastTimeout;
@@ -1582,6 +1603,26 @@
     // تفعيل الصفحة المطلوبة من الرابط، ثم عرضها باللغة العربية.
     renderPage();
     setLanguage("ar");
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdown = document.querySelector(".nav-dropdown");
+  const toggle = document.querySelector(".nav-dropdown-toggle");
+
+  if (!dropdown || !toggle) return;
+
+  toggle.addEventListener("click", function () {
+    const isOpen = dropdown.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  document.addEventListener("click", function (event) {
+    if (!dropdown.contains(event.target)) {
+      dropdown.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+});
+</script>
   </script>
 </body>
 </html>
