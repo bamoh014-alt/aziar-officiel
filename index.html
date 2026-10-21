@@ -3,11 +3,1457 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>جماعة أزيار الرسمية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123d32">
+  <meta name="description" content="الموقع الرقمي لجماعة أزيار، قيادة إيموزار، عمالة أكادير إداوتنان">
+  <title>جماعة أزيار الرقمية</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #123d32;
+      --green-dark: #0b2d25;
+      --green-light: #eaf3ef;
+      --gold: #c9a45c;
+      --white: #ffffff;
+      --text: #26352f;
+      --muted: #718078;
+      --border: #e3eae6;
+      --background: #f7f9f7;
+      --shadow: 0 8px 28px rgba(18, 61, 50, .08);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Tajawal", sans-serif;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.8;
+    }
+
+    body, button, input, textarea, select {
+      font-family: "Tajawal", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 36px));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      background: var(--green);
+      color: white;
+      font-size: 13px;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      min-height: 42px;
+    }
+
+    .topbar-note {
+      color: rgba(255,255,255,.85);
+    }
+
+    .topbar-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .topbar-links a {
+      color: white;
+    }
+
+    .topbar-links a:hover {
+      color: #f0d79f;
+    }
+
+    .lang-btn {
+      border: 1px solid rgba(255,255,255,.6);
+      color: white;
+      background: transparent;
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .lang-btn:hover {
+      background: rgba(255,255,255,.12);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 220px;
+    }
+
+    .brand-mark {
+      width: 54px;
+      height: 54px;
+      flex: 0 0 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--green);
+      color: var(--gold);
+      font-size: 28px;
+      font-weight: 800;
+      border: 2px solid var(--gold);
+    }
+
+    .brand-text strong {
+      display: block;
+      color: var(--green);
+      font-size: 19px;
+      line-height: 1.5;
+    }
+
+    .brand-text span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      display: block;
+      color: #34463e;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 11px;
+      border-radius: 9px;
+      transition: .2s;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--green);
+      background: var(--green-light);
+    }
+
+    .nav a.active {
+      box-shadow: inset 0 -2px var(--gold);
+    }
+
+    .header-actions {
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 43px;
+      height: 43px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: white;
+      color: var(--green);
+      font-size: 22px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 85px 0;
+      color: white;
+      background:
+        radial-gradient(circle at 10% 15%, rgba(201,164,92,.18), transparent 30%),
+        linear-gradient(125deg, #0b2d25, #174f40);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 50%;
+      inset-inline-end: -120px;
+      bottom: -190px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 5px 13px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(201,164,92,.6);
+      border-radius: 30px;
+      color: #f0d79f;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      margin: 0 0 18px;
+      font-size: clamp(32px, 5vw, 53px);
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: rgba(255,255,255,.83);
+      font-size: 18px;
+      margin: 0 0 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      color: var(--green-dark);
+      background: var(--gold);
+    }
+
+    .btn-primary:hover {
+      background: #dfbf7c;
+      transform: translateY(-2px);
+    }
+
+    .btn-light {
+      color: white;
+      border-color: rgba(255,255,255,.45);
+      background: rgba(255,255,255,.06);
+    }
+
+    .btn-light:hover {
+      background: rgba(255,255,255,.14);
+    }
+
+    .section {
+      padding: 66px 0;
+    }
+
+    .section-soft {
+      background: #eef4f0;
+    }
+
+    .section-heading {
+      margin-bottom: 30px;
+      max-width: 760px;
+    }
+
+    .section-kicker {
+      color: #9b7836;
+      font-weight: 800;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-size: clamp(25px, 3vw, 34px);
+      line-height: 1.45;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 13px 32px rgba(18,61,50,.12);
+    }
+
+    .card-icon {
+      display: grid;
+      place-items: center;
+      width: 49px;
+      height: 49px;
+      margin-bottom: 15px;
+      border-radius: 13px;
+      color: var(--green);
+      background: var(--green-light);
+      font-size: 23px;
+    }
+
+    .card h3 {
+      margin: 0 0 9px;
+      color: var(--green);
+      font-size: 19px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0 0 15px;
+      font-size: 14px;
+    }
+
+    .text-link {
+      color: #8c6a2e;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .text-link:hover {
+      color: var(--green);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .about-panel {
+      min-height: 290px;
+      padding: 35px;
+      border-radius: 20px;
+      color: white;
+      background: linear-gradient(145deg, var(--green), #22634f);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-panel .big-mark {
+      color: var(--gold);
+      font-size: 55px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .about-panel h3 {
+      font-size: 25px;
+      margin: 15px 0 5px;
+    }
+
+    .about-panel p {
+      color: rgba(255,255,255,.8);
+      margin: 0;
+    }
+
+    .feature-list {
+      padding: 0;
+      margin: 20px 0 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      color: #9b7836;
+      font-weight: 800;
+      margin-inline-end: 10px;
+    }
+
+    .news-card {
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .news-top {
+      min-height: 115px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #dce9e1, #f2e7cd);
+      color: var(--green);
+      font-size: 36px;
+    }
+
+    .news-body {
+      padding: 22px;
+    }
+
+    .news-tag {
+      color: #947031;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .digital-banner {
+      padding: 34px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      color: white;
+      background: var(--green);
+    }
+
+    .digital-banner h2 {
+      margin: 0 0 8px;
+      font-size: 27px;
+    }
+
+    .digital-banner p {
+      margin: 0;
+      color: rgba(255,255,255,.8);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 25px;
+    }
+
+    .contact-info {
+      background: var(--green);
+      color: white;
+      padding: 28px;
+      border-radius: var(--radius);
+    }
+
+    .contact-info h3 {
+      margin-top: 0;
+      font-size: 23px;
+    }
+
+    .contact-info p {
+      color: rgba(255,255,255,.8);
+    }
+
+    .contact-form {
+      padding: 28px;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: var(--radius);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      border: 1px solid #dbe4de;
+      border-radius: 9px;
+      padding: 12px;
+      background: #fbfcfb;
+      color: var(--text);
+      font-size: 15px;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: #7ba293;
+      box-shadow: 0 0 0 3px rgba(18,61,50,.07);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .page-heading {
+      padding: 52px 0;
+      background: linear-gradient(125deg, #0b2d25, #174f40);
+      color: white;
+    }
+
+    .page-heading h1 {
+      font-size: clamp(29px, 4vw, 42px);
+      line-height: 1.4;
+      margin: 0 0 8px;
+    }
+
+    .page-heading p {
+      color: rgba(255,255,255,.8);
+      margin: 0;
+    }
+
+    .page-content {
+      min-height: 42vh;
+    }
+
+    .page-note {
+      margin-top: 25px;
+      padding: 18px 20px;
+      border-inline-start: 4px solid var(--gold);
+      border-radius: 9px;
+      background: #fff9eb;
+      color: #67552f;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 38px 20px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .empty-state h3 {
+      color: var(--green);
+    }
+
+    .site-footer {
+      background: #09271f;
+      color: white;
+      padding: 40px 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 30px;
+      padding-bottom: 25px;
+    }
+
+    .site-footer h3,
+    .site-footer h4 {
+      margin-top: 0;
+      color: #f0d79f;
+    }
+
+    .site-footer p,
+    .site-footer a {
+      color: rgba(255,255,255,.75);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+    }
+
+    .site-footer a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.14);
+      padding-top: 15px;
+      color: rgba(255,255,255,.6);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 500;
+      bottom: 22px;
+      inset-inline-start: 22px;
+      max-width: calc(100% - 44px);
+      padding: 13px 18px;
+      background: var(--green-dark);
+      color: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: .25s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 1000px) {
+      .header-inner {
+        min-height: 78px;
+      }
+
+      .header-actions {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        inset-inline: 0;
+        padding: 12px 18px 18px;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        align-items: stretch;
+      }
+
+      .nav.open {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .nav a {
+        padding: 12px;
+      }
+
+      .brand {
+        min-width: 0;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar-inner {
+        padding-block: 8px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .topbar-links {
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 48px 0;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-layout,
+      .contact-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .digital-banner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 25px;
+      }
+
+      .brand-mark {
+        width: 46px;
+        height: 46px;
+        flex-basis: 46px;
+        font-size: 23px;
+      }
+
+      .brand-text strong {
+        font-size: 16px;
+      }
+
+      .brand-text span {
+        font-size: 10px;
+      }
+    }
+
+    html[dir="ltr"] .feature-list li::before {
+      margin-inline-end: 10px;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>مرحبا بكم في الموقع الرسمي لجماعة أزيار</h1>
-  <p>البوابة الرقمية لجماعة أزيار - قيادة إيموزار - عمالة أكادير إداوتنان</p>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-note"
+           data-ar="المملكة المغربية • جماعة أزيار"
+           data-fr="Royaume du Maroc • Commune d’Aziar">
+        المملكة المغربية • جماعة أزيار
+      </div>
+
+      <div class="topbar-links">
+        <a href="?page=services" data-ar="الخدمات" data-fr="Services">الخدمات</a>
+        <a href="?page=contact" data-ar="اتصل بنا" data-fr="Contact">اتصل بنا</a>
+        <button class="lang-btn" id="langToggle" type="button" aria-label="Changer de langue">FR</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="?page=home" aria-label="الرئيسية">
+        <div class="brand-mark">أ</div>
+        <div class="brand-text">
+          <strong data-ar="جماعة أزيار" data-fr="Commune d’Aziar">جماعة أزيار</strong>
+          <span data-ar="بوابتكم الرقمية للخدمات المحلية" data-fr="Votre portail numérique des services locaux">بوابتكم الرقمية للخدمات المحلية</span>
+        </div>
+      </a>
+
+      <nav class="nav" id="mainNav">
+        <a href="?page=home" data-page="home" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
+        <a href="?page=commune" data-page="commune" data-ar="الجماعة" data-fr="La commune">الجماعة</a>
+        <a href="?page=development" data-page="development" data-ar="برنامج التنمية القروية" data-fr="Programme de développement rural">برنامج التنمية القروية</a>
+        <a href="?page=services" data-page="services" data-ar="الخدمات الإدارية" data-fr="Services administratifs">الخدمات الإدارية</a>
+        <a href="?page=news" data-page="news" data-ar="الأخبار والمستجدات" data-fr="Actualités">الأخبار والمستجدات</a>
+        <a href="?page=digital" data-page="digital" data-ar="الخدمات الرقمية" data-fr="Services numériques">الخدمات الرقمية</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="فتح القائمة">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    <!-- الصفحة الرئيسية -->
+    <div data-view="home">
+      <section class="hero" id="home">
+        <div class="container">
+          <div class="hero-content">
+            <span class="eyebrow"
+                  data-ar="مرحبا بكم في البوابة الرقمية"
+                  data-fr="Bienvenue sur le portail numérique">
+              مرحبا بكم في البوابة الرقمية
+            </span>
+            <h1 data-ar="جماعة أزيار الرقمية" data-fr="Commune d’Aziar numérique">جماعة أزيار الرقمية</h1>
+            <p data-ar="بوابتكم للتعرف على خدمات الجماعة، الاطلاع على المستجدات، والوصول إلى المعلومات والخدمات المحلية بسهولة."
+               data-fr="Votre portail pour découvrir les services de la commune, consulter les actualités et accéder facilement aux informations locales.">
+              بوابتكم للتعرف على خدمات الجماعة، الاطلاع على المستجدات، والوصول إلى المعلومات والخدمات المحلية بسهولة.
+            </p>
+            <div class="hero-buttons">
+              <a class="btn btn-primary" href="?page=services" data-ar="اكتشف الخدمات ←" data-fr="Découvrir les services →">اكتشف الخدمات ←</a>
+              <a class="btn btn-light" href="?page=commune" data-ar="تعرف على الجماعة" data-fr="Découvrir la commune">تعرف على الجماعة</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <div class="section-kicker" data-ar="خدمات القرب" data-fr="Services de proximité">خدمات القرب</div>
+            <h2 data-ar="كيف يمكننا مساعدتكم؟" data-fr="Comment pouvons-nous vous aider ?">كيف يمكننا مساعدتكم؟</h2>
+            <p data-ar="يمكنكم الولوج إلى الصفحات المخصصة للخدمات الإدارية والرقمية ومعلومات الجماعة."
+               data-fr="Accédez aux pages consacrées aux services administratifs et numériques ainsi qu’aux informations communales.">
+              يمكنكم الولوج إلى الصفحات المخصصة للخدمات الإدارية والرقمية ومعلومات الجماعة.
+            </p>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div class="card-icon">▤</div>
+              <h3 data-ar="الخدمات الإدارية" data-fr="Services administratifs">الخدمات الإدارية</h3>
+              <p data-ar="تعرفوا على الخدمات والمعلومات الإدارية المتاحة للمرتفقين."
+                 data-fr="Découvrez les informations et services administratifs destinés aux usagers.">
+                تعرفوا على الخدمات والمعلومات الإدارية المتاحة للمرتفقين.
+              </p>
+              <a class="text-link" href="?page=services" data-ar="عرض الخدمات ←" data-fr="Voir les services →">عرض الخدمات ←</a>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">⌂</div>
+              <h3 data-ar="برنامج التنمية القروية" data-fr="Programme de développement rural">برنامج التنمية القروية</h3>
+              <p data-ar="اطلعوا على محاور التنمية القروية والمشاريع المحلية."
+                 data-fr="Consultez les axes du développement rural et les projets locaux.">
+                اطلعوا على محاور التنمية القروية والمشاريع المحلية.
+              </p>
+              <a class="text-link" href="?page=development" data-ar="اكتشف البرنامج ←" data-fr="Découvrir le programme →">اكتشف البرنامج ←</a>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">✉</div>
+              <h3 data-ar="الخدمات الرقمية" data-fr="Services numériques">الخدمات الرقمية</h3>
+              <p data-ar="اكتشفوا الخدمات الرقمية الموجهة لتسهيل التواصل مع الجماعة."
+                 data-fr="Découvrez les services numériques destinés à faciliter les échanges avec la commune.">
+                اكتشفوا الخدمات الرقمية الموجهة لتسهيل التواصل مع الجماعة.
+              </p>
+              <a class="text-link" href="?page=digital" data-ar="عرض الخدمات الرقمية ←" data-fr="Voir les services numériques →">عرض الخدمات الرقمية ←</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-soft">
+        <div class="container about-layout">
+          <div>
+            <div class="section-heading">
+              <div class="section-kicker" data-ar="عن الجماعة" data-fr="À propos">عن الجماعة</div>
+              <h2 data-ar="جماعة أزيار في خدمتكم" data-fr="La commune d’Aziar à votre service">جماعة أزيار في خدمتكم</h2>
+              <p data-ar="تسعى هذه البوابة إلى تسهيل الوصول إلى المعلومات والخدمات المحلية وتعزيز التواصل مع المواطنين."
+                 data-fr="Ce portail vise à faciliter l’accès aux informations et aux services locaux et à renforcer la communication avec les citoyens.">
+                تسعى هذه البوابة إلى تسهيل الوصول إلى المعلومات والخدمات المحلية وتعزيز التواصل مع المواطنين.
+              </p>
+            </div>
+            <ul class="feature-list">
+              <li data-ar="تسهيل الوصول إلى المعلومات الإدارية" data-fr="Faciliter l’accès aux informations administratives">تسهيل الوصول إلى المعلومات الإدارية</li>
+              <li data-ar="تقريب الخدمات من المواطن" data-fr="Rapprocher les services du citoyen">تقريب الخدمات من المواطن</li>
+              <li data-ar="تعزيز التواصل والمشاركة المواطنة" data-fr="Renforcer la communication et la participation citoyenne">تعزيز التواصل والمشاركة المواطنة</li>
+            </ul>
+            <p><a class="btn btn-primary" href="?page=commune" data-ar="المزيد عن الجماعة" data-fr="En savoir plus sur la commune">المزيد عن الجماعة</a></p>
+          </div>
+          <div class="about-panel">
+            <div class="big-mark">أزيار</div>
+            <h3 data-ar="خدمة المواطن أولوية" data-fr="Le citoyen au cœur du service">خدمة المواطن أولوية</h3>
+            <p data-ar="بوابة للتواصل والوصول إلى المعلومات المحلية."
+               data-fr="Un portail pour communiquer et accéder aux informations locales.">
+              بوابة للتواصل والوصول إلى المعلومات المحلية.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <div class="section-kicker" data-ar="المستجدات" data-fr="Actualités">المستجدات</div>
+            <h2 data-ar="الأخبار والإعلانات" data-fr="Actualités et annonces">الأخبار والإعلانات</h2>
+            <p data-ar="تابعوا الأخبار والإعلانات المتعلقة بالجماعة."
+               data-fr="Suivez les nouvelles et les annonces concernant la commune.">
+              تابعوا الأخبار والإعلانات المتعلقة بالجماعة.
+            </p>
+          </div>
+
+          <div class="grid">
+            <article class="card news-card">
+              <div class="news-top">▤</div>
+              <div class="news-body">
+                <div class="news-tag" data-ar="إعلانات" data-fr="Annonces">إعلانات</div>
+                <h3 data-ar="الإعلانات الرسمية" data-fr="Annonces officielles">الإعلانات الرسمية</h3>
+                <p data-ar="سيتم نشر الإعلانات الرسمية والمعلومات الجديدة هنا عند توفرها."
+                   data-fr="Les annonces officielles et les nouvelles informations seront publiées ici lorsqu’elles seront disponibles.">
+                  سيتم نشر الإعلانات الرسمية والمعلومات الجديدة هنا عند توفرها.
+                </p>
+              </div>
+            </article>
+
+            <article class="card news-card">
+              <div class="news-top">⌂</div>
+              <div class="news-body">
+                <div class="news-tag" data-ar="التنمية المحلية" data-fr="Développement local">التنمية المحلية</div>
+                <h3 data-ar="مشاريع الجماعة" data-fr="Projets communaux">مشاريع الجماعة</h3>
+                <p data-ar="سيتم تخصيص هذا الفضاء لنشر مستجدات المشاريع المحلية."
+                   data-fr="Cet espace sera consacré aux actualités des projets locaux.">
+                  سيتم تخصيص هذا الفضاء لنشر مستجدات المشاريع المحلية.
+                </p>
+              </div>
+            </article>
+
+            <article class="card news-card">
+              <div class="news-top">✦</div>
+              <div class="news-body">
+                <div class="news-tag" data-ar="مستجدات" data-fr="Actualités">مستجدات</div>
+                <h3 data-ar="معلومات تهم المواطنين" data-fr="Informations aux citoyens">معلومات تهم المواطنين</h3>
+                <p data-ar="سيتم تحيين هذا القسم بالمعلومات التي تهم ساكنة الجماعة."
+                   data-fr="Cette rubrique sera mise à jour avec les informations utiles aux habitants.">
+                  سيتم تحيين هذا القسم بالمعلومات التي تهم ساكنة الجماعة.
+                </p>
+              </div>
+            </article>
+          </div>
+          <p style="margin-top:24px">
+            <a class="btn btn-primary" href="?page=news" data-ar="جميع المستجدات" data-fr="Toutes les actualités">جميع المستجدات</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="section section-soft">
+        <div class="container">
+          <div class="digital-banner">
+            <div>
+              <h2 data-ar="الخدمات الرقمية للمواطنين" data-fr="Services numériques aux citoyens">الخدمات الرقمية للمواطنين</h2>
+              <p data-ar="فضاء مخصص لتسهيل التواصل وتطوير الخدمات الرقمية."
+                 data-fr="Un espace dédié à la facilitation des échanges et au développement des services numériques.">
+                فضاء مخصص لتسهيل التواصل وتطوير الخدمات الرقمية.
+              </p>
+            </div>
+            <a class="btn btn-primary" href="?page=digital" data-ar="اكتشف الخدمات" data-fr="Découvrir les services">اكتشف الخدمات</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- صفحة الجماعة -->
+    <div data-view="commune" hidden>
+      <section class="page-heading">
+        <div class="container">
+          <h1 data-ar="الجماعة" data-fr="La commune">الجماعة</h1>
+          <p data-ar="معلومات عامة عن جماعة أزيار واختصاصاتها."
+             data-fr="Informations générales sur la commune d’Aziar et ses compétences.">
+            معلومات عامة عن جماعة أزيار واختصاصاتها.
+          </p>
+        </div>
+      </section>
+      <section class="section page-content">
+        <div class="container about-layout">
+          <div>
+            <div class="section-heading">
+              <div class="section-kicker" data-ar="تقديم" data-fr="Présentation">تقديم</div>
+              <h2 data-ar="جماعة أزيار" data-fr="Commune d’Aziar">جماعة أزيار</h2>
+              <p data-ar="تعمل الجماعة على تقديم الخدمات المحلية والمساهمة في التنمية الترابية والاستجابة لحاجيات الساكنة في إطار اختصاصاتها."
+                 data-fr="La commune œuvre à fournir les services locaux, à contribuer au développement territorial et à répondre aux besoins des habitants dans le cadre de ses compétences.">
+                تعمل الجماعة على تقديم الخدمات المحلية والمساهمة في التنمية الترابية والاستجابة لحاجيات الساكنة في إطار اختصاصاتها.
+              </p>
+            </div>
+            <ul class="feature-list">
+              <li data-ar="تقديم الخدمات الجماعية في حدود الاختصاصات القانونية"
+                  data-fr="Fournir les services communaux relevant de ses compétences légales">تقديم الخدمات الجماعية في حدود الاختصاصات القانونية</li>
+              <li data-ar="المساهمة في التنمية المحلية"
+                  data-fr="Contribuer au développement local">المساهمة في التنمية المحلية</li>
+              <li data-ar="التواصل مع المواطنين والمرتفقين"
+                  data-fr="Communiquer avec les citoyens et les usagers">التواصل مع المواطنين والمرتفقين</li>
+            </ul>
+          </div>
+          <div class="about-panel">
+            <div class="big-mark">أزيار</div>
+            <h3 data-ar="جماعة في خدمة الساكنة" data-fr="Une commune au service des habitants">جماعة في خدمة الساكنة</h3>
+            <p data-ar="المعلومات المنشورة في هذا الموقع يتم تحيينها حسب ما يتوفر لدى الجماعة."
+               data-fr="Les informations publiées sur ce site sont mises à jour selon les éléments disponibles auprès de la commune.">
+              المعلومات المنشورة في هذا الموقع يتم تحيينها حسب ما يتوفر لدى الجماعة.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- صفحة برنامج التنمية القروية -->
+    <div data-view="development" hidden>
+      <section class="page-heading">
+        <div class="container">
+          <h1 data-ar="برنامج التنمية القروية" data-fr="Programme de développement rural">برنامج التنمية القروية</h1>
+          <p data-ar="فضاء للتعريف بمحاور التنمية والمشاريع القروية بالجماعة."
+             data-fr="Un espace consacré aux axes de développement et aux projets ruraux de la commune.">
+            فضاء للتعريف بمحاور التنمية والمشاريع القروية بالجماعة.
+          </p>
+        </div>
+      </section>
+      <section class="section page-content">
+        <div class="container">
+          <div class="section-heading">
+            <div class="section-kicker" data-ar="التنمية المحلية" data-fr="Développement local">التنمية المحلية</div>
+            <h2 data-ar="محاور برنامج التنمية القروية" data-fr="Axes du programme de développement rural">محاور برنامج التنمية القروية</h2>
+            <p data-ar="يمكن تخصيص هذا الفضاء لنشر البرنامج المعتمد والمشاريع والبيانات الرسمية بعد التحقق منها."
+               data-fr="Cet espace peut présenter le programme adopté, les projets et les données officielles après vérification.">
+              يمكن تخصيص هذا الفضاء لنشر البرنامج المعتمد والمشاريع والبيانات الرسمية بعد التحقق منها.
+            </p>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div class="card-icon">⌂</div>
+              <h3 data-ar="البنيات التحتية" data-fr="Infrastructures">البنيات التحتية</h3>
+              <p data-ar="عرض المشاريع المرتبطة بالطرق والمسالك والتجهيزات الأساسية عند توفر المعطيات الرسمية."
+                 data-fr="Présentation des projets liés aux routes, pistes et équipements de base lorsque les données officielles sont disponibles.">
+                عرض المشاريع المرتبطة بالطرق والمسالك والتجهيزات الأساسية عند توفر المعطيات الرسمية.
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-icon">♧</div>
+              <h3 data-ar="الخدمات الأساسية" data-fr="Services essentiels">الخدمات الأساسية</h3>
+              <p data-ar="تقديم المعلومات المتعلقة بالمشاريع المحلية والخدمات الأساسية المبرمجة."
+                 data-fr="Informations sur les projets locaux et les services essentiels programmés.">
+                تقديم المعلومات المتعلقة بالمشاريع المحلية والخدمات الأساسية المبرمجة.
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-icon">↗</div>
+              <h3 data-ar="تتبع المشاريع" data-fr="Suivi des projets">تتبع المشاريع</h3>
+              <p data-ar="نشر وضعية المشاريع ومراحل الإنجاز والتحديثات الرسمية عند توفرها."
+                 data-fr="Publication de l’état des projets, des étapes de réalisation et des mises à jour officielles lorsqu’elles sont disponibles.">
+                نشر وضعية المشاريع ومراحل الإنجاز والتحديثات الرسمية عند توفرها.
+              </p>
+            </article>
+          </div>
+
+          <div class="page-note"
+               data-ar="ملاحظة: هذه الصفحة مخصصة لعرض معلومات البرنامج. لم تتم إضافة أسماء مشاريع أو ميزانيات أو تواريخ غير مؤكدة."
+               data-fr="Remarque : cette page est destinée à présenter les informations du programme. Aucun projet, budget ou calendrier non vérifié n’a été ajouté.">
+            ملاحظة: هذه الصفحة مخصصة لعرض معلومات البرنامج. لم تتم إضافة أسماء مشاريع أو ميزانيات أو تواريخ غير مؤكدة.
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- صفحة الخدمات الإدارية -->
+    <div data-view="services" hidden>
+      <section class="page-heading">
+        <div class="container">
+          <h1 data-ar="الخدمات الإدارية" data-fr="Services administratifs">الخدمات الإدارية</h1>
+          <p data-ar="معلومات وإرشادات حول الخدمات الإدارية الجماعية."
+             data-fr="Informations et indications concernant les services administratifs communaux.">
+            معلومات وإرشادات حول الخدمات الإدارية الجماعية.
+          </p>
+        </div>
+      </section>
+      <section class="section page-content">
+        <div class="container">
+          <div class="section-heading">
+            <h2 data-ar="الخدمات والمعلومات" data-fr="Services et informations">الخدمات والمعلومات</h2>
+            <p data-ar="يمكن تحيين هذه الصفحة بوثائق وشروط وإجراءات كل خدمة حسب المعلومات الرسمية المتوفرة."
+               data-fr="Cette page peut être complétée par les documents, conditions et démarches de chaque service selon les informations officielles disponibles.">
+              يمكن تحيين هذه الصفحة بوثائق وشروط وإجراءات كل خدمة حسب المعلومات الرسمية المتوفرة.
+            </p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <div class="card-icon">▤</div>
+              <h3 data-ar="المعلومات الإدارية" data-fr="Informations administratives">المعلومات الإدارية</h3>
+              <p data-ar="التعرف على المعلومات والإجراءات المرتبطة بالخدمات الجماعية."
+                 data-fr="Consulter les informations et démarches relatives aux services communaux.">
+                التعرف على المعلومات والإجراءات المرتبطة بالخدمات الجماعية.
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-icon">▣</div>
+              <h3 data-ar="الوثائق والإجراءات" data-fr="Documents et démarches">الوثائق والإجراءات</h3>
+              <p data-ar="فضاء لإضافة الوثائق المطلوبة والخطوات الخاصة بكل خدمة بعد تأكيدها."
+                 data-fr="Espace pour ajouter les documents requis et les étapes de chaque service après confirmation.">
+                فضاء لإضافة الوثائق المطلوبة والخطوات الخاصة بكل خدمة بعد تأكيدها.
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-icon">☎</div>
+              <h3 data-ar="الاستفسارات" data-fr="Renseignements">الاستفسارات</h3>
+              <p data-ar="يمكنكم التواصل مع الجماعة للحصول على معلومات إضافية حول الخدمات."
+                 data-fr="Vous pouvez contacter la commune pour obtenir des renseignements supplémentaires sur les services.">
+                يمكنكم التواصل مع الجماعة للحصول على معلومات إضافية حول الخدمات.
+              </p>
+              <a class="text-link" href="?page=contact" data-ar="معلومات الاتصال ←" data-fr="Coordonnées →">معلومات الاتصال ←</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- صفحة الأخبار -->
+    <div data-view="news" hidden>
+      <section class="page-heading">
+        <div class="container">
+          <h1 data-ar="الأخبار والمستجدات" data-fr="Actualités">الأخبار والمستجدات</h1>
+          <p data-ar="آخر الإعلانات والمعلومات المتعلقة بالجماعة."
+             data-fr="Les dernières annonces et informations concernant la commune.">
+            آخر الإعلانات والمعلومات المتعلقة بالجماعة.
+          </p>
+        </div>
+      </section>
+      <section class="section page-content">
+        <div class="container">
+          <div class="grid">
+            <article class="card">
+              <div class="card-icon">▤</div>
+              <h3 data-ar="الإعلانات الرسمية" data-fr="Annonces officielles">الإعلانات الرسمية</h3>
+              <p data-ar="سيتم عرض الإعلانات الرسمية هنا عند نشرها وإدراجها في الموقع."
+                 data-fr="Les annonces officielles seront affichées ici lorsqu’elles seront publiées et ajoutées au site.">
+                سيتم عرض الإعلانات الرسمية هنا عند نشرها وإدراجها في الموقع.
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-icon">⌂</div>
+              <h3 data-ar="المشاريع والأنشطة" data-fr="Projets et activités">المشاريع والأنشطة</h3>
+              <p data-ar="فضاء لنشر أخبار المشاريع والأنشطة الجماعية."
+                 data-fr="Espace destiné à publier les actualités des projets et activités communales.">
+                فضاء لنشر أخبار المشاريع والأنشطة الجماعية.
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-icon">✦</div>
+              <h3 data-ar="معلومات للساكنة" data-fr="Informations aux habitants">معلومات للساكنة</h3>
+              <p data-ar="سيتم تحيين هذا القسم بالمعلومات والإعلانات التي تهم الساكنة."
+                 data-fr="Cette rubrique sera mise à jour avec les informations et annonces destinées aux habitants.">
+                سيتم تحيين هذا القسم بالمعلومات والإعلانات التي تهم الساكنة.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- صفحة الخدمات الرقمية -->
+    <div data-view="digital" hidden>
+      <section class="page-heading">
+        <div class="container">
+          <h1 data-ar="الخدمات الرقمية" data-fr="Services numériques">الخدمات الرقمية</h1>
+          <p data-ar="خدمات رقمية لتسهيل التواصل بين المواطن والجماعة."
+             data-fr="Des services numériques pour faciliter la communication entre les citoyens et la commune.">
+            خدمات رقمية لتسهيل التواصل بين المواطن والجماعة.
+          </p>
+        </div>
+      </section>
+      <section class="section page-content">
+        <div class="container">
+          <div class="section-heading">
+            <h2 data-ar="فضاء الخدمات الرقمية" data-fr="Espace des services numériques">فضاء الخدمات الرقمية</h2>
+            <p data-ar="بعض الخدمات تحتاج إلى تفعيل وربط تقني قبل استعمالها من طرف المواطنين."
+               data-fr="Certains services nécessitent une activation et une configuration technique avant leur utilisation par les citoyens.">
+              بعض الخدمات تحتاج إلى تفعيل وربط تقني قبل استعمالها من طرف المواطنين.
+            </p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <div class="card-icon">✉</div>
+              <h3 data-ar="الشكايات" data-fr="Réclamations">الشكايات</h3>
+              <p data-ar="إرسال الشكايات والملاحظات المتعلقة بالخدمات المحلية."
+                 data-fr="Envoyer des réclamations et observations concernant les services locaux.">
+                إرسال الشكايات والملاحظات المتعلقة بالخدمات المحلية.
+              </p>
+              <button class="btn btn-primary" type="button" data-demo
+                      data-ar="الخدمة قيد الإعداد" data-fr="Service en préparation">الخدمة قيد الإعداد</button>
+            </article>
+            <article class="card">
+              <div class="card-icon">☷</div>
+              <h3 data-ar="الاقتراحات والآراء" data-fr="Suggestions et avis">الاقتراحات والآراء</h3>
+              <p data-ar="المساهمة بآرائكم واقتراحاتكم لتحسين الخدمات المحلية."
+                 data-fr="Contribuer avec vos avis et suggestions à l’amélioration des services locaux.">
+                المساهمة بآرائكم واقتراحاتكم لتحسين الخدمات المحلية.
+              </p>
+              <button class="btn btn-primary" type="button" data-demo
+                      data-ar="الخدمة قيد الإعداد" data-fr="Service en préparation">الخدمة قيد الإعداد</button>
+            </article>
+            <article class="card">
+              <div class="card-icon">⌕</div>
+              <h3 data-ar="تتبع الطلبات" data-fr="Suivi des demandes">تتبع الطلبات</h3>
+              <p data-ar="فضاء مخصص لتتبع الطلبات باستعمال المعلومات المرجعية."
+                 data-fr="Espace destiné au suivi des demandes à l’aide des informations de référence.">
+                فضاء مخصص لتتبع الطلبات باستعمال المعلومات المرجعية.
+              </p>
+              <button class="btn btn-primary" type="button" data-demo
+                      data-ar="الخدمة قيد الإعداد" data-fr="Service en préparation">الخدمة قيد الإعداد</button>
+            </article>
+          </div>
+          <div class="page-note"
+               data-ar="ملاحظة: أزرار الخدمات التجريبية لا ترسل طلبات حقيقية. يجب ربطها بالخدمة المناسبة قبل نشرها للاستعمال الرسمي."
+               data-fr="Remarque : les boutons de démonstration n’envoient pas de demandes réelles. Ils doivent être reliés au service approprié avant la mise en service officielle.">
+            ملاحظة: أزرار الخدمات التجريبية لا ترسل طلبات حقيقية. يجب ربطها بالخدمة المناسبة قبل نشرها للاستعمال الرسمي.
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- صفحة الاتصال -->
+    <div data-view="contact" hidden>
+      <section class="page-heading">
+        <div class="container">
+          <h1 data-ar="اتصل بنا" data-fr="Contact">اتصل بنا</h1>
+          <p data-ar="فضاء للتواصل والاستفسار حول خدمات الجماعة."
+             data-fr="Un espace pour communiquer et demander des renseignements sur les services communaux.">
+            فضاء للتواصل والاستفسار حول خدمات الجماعة.
+          </p>
+        </div>
+      </section>
+      <section class="section page-content">
+        <div class="container contact-grid">
+          <div class="contact-info">
+            <h3 data-ar="معلومات التواصل" data-fr="Coordonnées">معلومات التواصل</h3>
+            <p data-ar="للحصول على معلومات دقيقة حول العنوان وأرقام الهاتف وأوقات العمل، يرجى اعتماد المعطيات الرسمية الصادرة عن الجماعة."
+               data-fr="Pour obtenir des informations exactes sur l’adresse, le téléphone et les horaires, veuillez vous référer aux informations officielles publiées par la commune.">
+              للحصول على معلومات دقيقة حول العنوان وأرقام الهاتف وأوقات العمل، يرجى اعتماد المعطيات الرسمية الصادرة عن الجماعة.
+            </p>
+            <p data-ar="جماعة أزيار • قيادة إيموزار • عمالة أكادير إداوتنان"
+               data-fr="Commune d’Aziar • Caïdat d’Imouzzer • Préfecture d’Agadir Ida-Outanane">
+              جماعة أزيار • قيادة إيموزار • عمالة أكادير إداوتنان
+            </p>
+          </div>
+
+          <div class="contact-form">
+            <h3 data-ar="أرسل استفسارك" data-fr="Envoyer une demande de renseignement">أرسل استفسارك</h3>
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="contactName" data-ar="الاسم الكامل" data-fr="Nom complet">الاسم الكامل</label>
+                <input id="contactName" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="contactEmail" data-ar="البريد الإلكتروني (اختياري)" data-fr="E-mail (facultatif)">البريد الإلكتروني (اختياري)</label>
+                <input id="contactEmail" name="email" type="email">
+              </div>
+              <div class="form-group">
+                <label for="contactMessage" data-ar="نص الاستفسار" data-fr="Votre message">نص الاستفسار</label>
+                <textarea id="contactMessage" name="message" required></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit" data-ar="إرسال" data-fr="Envoyer">إرسال</button>
+              <p data-ar="هذا النموذج تجريبي ولا يرسل الرسالة إلى الجماعة."
+                 data-fr="Ce formulaire est une démonstration et n’envoie pas le message à la commune."
+                 style="font-size:12px;color:#718078;margin-bottom:0">
+                هذا النموذج تجريبي ولا يرسل الرسالة إلى الجماعة.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 data-ar="جماعة أزيار الرقمية" data-fr="Commune d’Aziar numérique">جماعة أزيار الرقمية</h3>
+          <p data-ar="بوابة رقمية للتعريف بالخدمات المحلية وتقريب المعلومات من المواطنين."
+             data-fr="Un portail numérique pour présenter les services locaux et rapprocher l’information des citoyens.">
+            بوابة رقمية للتعريف بالخدمات المحلية وتقريب المعلومات من المواطنين.
+          </p>
+        </div>
+        <div>
+          <h4 data-ar="روابط سريعة" data-fr="Liens rapides">روابط سريعة</h4>
+          <div class="footer-links">
+            <a href="?page=commune" data-ar="الجماعة" data-fr="La commune">الجماعة</a>
+            <a href="?page=development" data-ar="برنامج التنمية القروية" data-fr="Programme de développement rural">برنامج التنمية القروية</a>
+            <a href="?page=services" data-ar="الخدمات الإدارية" data-fr="Services administratifs">الخدمات الإدارية</a>
+          </div>
+        </div>
+        <div>
+          <h4 data-ar="المزيد" data-fr="Plus">المزيد</h4>
+          <div class="footer-links">
+            <a href="?page=news" data-ar="الأخبار والمستجدات" data-fr="Actualités">الأخبار والمستجدات</a>
+            <a href="?page=digital" data-ar="الخدمات الرقمية" data-fr="Services numériques">الخدمات الرقمية</a>
+            <a href="?page=contact" data-ar="اتصل بنا" data-fr="Contact">اتصل بنا</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> <span data-ar="جماعة أزيار - جميع الحقوق محفوظة" data-fr="Commune d’Aziar - Tous droits réservés">جماعة أزيار - جميع الحقوق محفوظة</span></span>
+        <span data-ar="بوابتكم الرقمية للخدمات المحلية" data-fr="Votre portail numérique des services locaux">بوابتكم الرقمية للخدمات المحلية</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const pageNames = {
+      home: {
+        ar: "الرئيسية",
+        fr: "Accueil"
+      },
+      commune: {
+        ar: "الجماعة",
+        fr: "La commune"
+      },
+      development: {
+        ar: "برنامج التنمية القروية",
+        fr: "Programme de développement rural"
+      },
+      services: {
+        ar: "الخدمات الإدارية",
+        fr: "Services administratifs"
+      },
+      news: {
+        ar: "الأخبار والمستجدات",
+        fr: "Actualités"
+      },
+      digital: {
+        ar: "الخدمات الرقمية",
+        fr: "Services numériques"
+      },
+      contact: {
+        ar: "اتصل بنا",
+        fr: "Contact"
+      }
+    };
+
+    let currentLanguage = "ar";
+    let toastTimeout;
+
+    function getCurrentPage() {
+      const params = new URLSearchParams(window.location.search);
+      const requestedPage = params.get("page") || "home";
+      return Object.prototype.hasOwnProperty.call(pageNames, requestedPage)
+        ? requestedPage
+        : "home";
+    }
+
+    function renderPage() {
+      const currentPage = getCurrentPage();
+
+      document.querySelectorAll("[data-view]").forEach((view) => {
+        view.hidden = view.dataset.view !== currentPage;
+      });
+
+      document.querySelectorAll(".nav a[data-page]").forEach((link) => {
+        if (link.dataset.page === currentPage) {
+          link.classList.add("active");
+          link.setAttribute("aria-current", "page");
+        } else {
+          link.classList.remove("active");
+          link.removeAttribute("aria-current");
+        }
+      });
+
+      document.title =
+        (pageNames[currentPage][currentLanguage] || pageNames[currentPage].ar)
+        + " | "
+        + (currentLanguage === "ar" ? "جماعة أزيار" : "Commune d’Aziar");
+
+      document.getElementById("mainNav").classList.remove("open");
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+
+    function setLanguage(language) {
+      currentLanguage = language === "fr" ? "fr" : "ar";
+
+      document.documentElement.lang = currentLanguage;
+      document.documentElement.dir = currentLanguage === "ar" ? "rtl" : "ltr";
+      document.body.style.fontFamily = '"Tajawal", sans-serif';
+
+      document.querySelectorAll("[data-ar][data-fr]").forEach((element) => {
+        const translatedText = element.dataset[currentLanguage];
+        if (translatedText !== undefined) {
+          element.textContent = translatedText;
+        }
+      });
+
+      const langButton = document.getElementById("langToggle");
+      langButton.textContent = currentLanguage === "ar" ? "FR" : "AR";
+      langButton.setAttribute(
+        "aria-label",
+        currentLanguage === "ar" ? "Passer en français" : "التغيير إلى العربية"
+      );
+
+      document.getElementById("menuToggle").setAttribute(
+        "aria-label",
+        currentLanguage === "ar" ? "فتح القائمة" : "Ouvrir le menu"
+      );
+
+      renderPage();
+    }
+
+    document.getElementById("langToggle").addEventListener("click", () => {
+      setLanguage(currentLanguage === "ar" ? "fr" : "ar");
+    });
+
+    document.getElementById("menuToggle").addEventListener("click", () => {
+      document.getElementById("mainNav").classList.toggle("open");
+    });
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3200);
+    }
+
+    document.querySelectorAll("[data-demo]").forEach((button) => {
+      button.addEventListener("click", () => {
+        showToast(
+          currentLanguage === "ar"
+            ? "هذه الخدمة قيد الإعداد."
+            : "Ce service est en cours de préparation."
+        );
+      });
+    });
+
+    document.getElementById("contactForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      showToast(
+        currentLanguage === "ar"
+          ? "هذا نموذج تجريبي فقط، ولم يتم إرسال الرسالة."
+          : "Ceci est un formulaire de démonstration. Le message n’a pas été envoyé."
+      );
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // تفعيل الصفحة المطلوبة من الرابط، ثم عرضها باللغة العربية.
+    renderPage();
+    setLanguage("ar");
+  </script>
 </body>
 </html>
